@@ -2,13 +2,13 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
-    jest: true,
   },
   extends: [
     'airbnb',
     'airbnb/hooks',
     'plugin:react/recommended',
-    'plugin:prettier/recommended',
+    'plugin:react/jsx-runtime',
+    'prettier',
   ],
   overrides: [],
   parserOptions: {
@@ -17,8 +17,6 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
-    'prettier/prettier': 'error',
-    'react/react-in-jsx-scope': 'off',
-    'no-unused-vars': 'warn',
+    'react/function-component-definition': 'off',
   },
 };
