@@ -5,7 +5,7 @@ function App() {
   return (
     <div>
       <Header />
-      <div className="flex justify-center mt-20">
+      <div className="flex items-center justify-center h-screen">
         <QrForm />
       </div>
     </div>
