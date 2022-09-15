@@ -8,7 +8,7 @@ function QrForm() {
   const [url, setUrl] = useState('');
   const [qrcode, setQrcode] = useState('');
 
-  function GenerateQr() {
+  function generateQr() {
     if (url.length > 0) {
       QRCode.toDataURL(
         url,
@@ -46,7 +46,7 @@ function QrForm() {
         <button
           className="w-full p-2 my-5 rounded-lg text-white bg-red-500 hover:bg-red-400"
           type="submit"
-          onClick={GenerateQr}
+          onClick={generateQr}
         >
           Generate
         </button>
