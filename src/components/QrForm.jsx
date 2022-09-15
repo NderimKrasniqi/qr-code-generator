@@ -27,6 +27,7 @@ function QrForm() {
         }
       );
     }
+    setUrl('');
   }
 
   return (
