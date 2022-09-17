@@ -1,6 +1,6 @@
 /* eslint-disable no-unneeded-ternary */
-import QRCode from 'qrcode';
 import { useState } from 'react';
+import getQrCode from '../utils/utils';
 
 import qrImg from '../assets/qrcode.png';
 
@@ -8,27 +8,13 @@ function QrForm() {
   const [url, setUrl] = useState('');
   const [qrcode, setQrcode] = useState('');
 
-  function generateQr() {
+  const handleButton = async () => {
     if (url.length > 0) {
-      QRCode.toDataURL(
-        url,
-        {
-          errorCorrectionLevel: 'high',
-          width: 208,
-          margin: 3,
-          color: {
-            dark: '#ef4444',
-            light: '#0000',
-          },
-        },
-        (error, text) => {
-          if (error) return console.log(error);
-          return setQrcode(text);
-        }
-      );
+      const data = await getQrCode(url);
+      setQrcode(data);
     }
     setUrl('');
-  }
+  };
 
   return (
     <div className="bg-gray-900 flex flex-col max-w-sm rounded-lg p-10">
@@ -45,9 +31,9 @@ function QrForm() {
           onChange={(e) => setUrl(e.target.value)}
         />
         <button
-          className="w-full p-2 my-5 rounded-lg text-white bg-red-500 hover:bg-red-400"
+          className="w-full p-2 my-5 rounded-lg text-white bg-red-500 active:bg-red-400"
           type="submit"
-          onClick={generateQr}
+          onClick={handleButton}
         >
           Generate
         </button>
